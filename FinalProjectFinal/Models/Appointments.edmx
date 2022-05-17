@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="appointmentsModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="APPOINTMENTS">
+          <Key>
+            <PropertyRef Name="ApptID" />
+          </Key>
+          <Property Name="ApptID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StudentID" Type="int" Nullable="false" />
+          <Property Name="CounselorID" Type="int" Nullable="false" />
+          <Property Name="ApptDateTime" Type="datetime" Nullable="false" />
+          <Property Name="ApptApproval" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="ApptLocation" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="ApptDescription" Type="varchar" MaxLength="200" />
+          <Property Name="ApptLink" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityContainer Name="appointmentsModelStoreContainer">
+          <EntitySet Name="APPOINTMENTS" EntityType="Self.APPOINTMENTS" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="appointmentsModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="APPOINTMENT">
+          <Key>
+            <PropertyRef Name="ApptID" />
+          </Key>
+          <Property Name="ApptID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StudentID" Type="Int32" Nullable="false" />
+          <Property Name="CounselorID" Type="Int32" Nullable="false" />
+          <Property Name="ApptDateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ApptApproval" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ApptLocation" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ApptDescription" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="ApptLink" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityContainer Name="appointmentEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="APPOINTMENTS" EntityType="Self.APPOINTMENT" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="appointmentsModelStoreContainer" CdmEntityContainer="appointmentEntities">
+          <EntitySetMapping Name="APPOINTMENTS">
+            <EntityTypeMapping TypeName="appointmentsModel.APPOINTMENT">
+              <MappingFragment StoreEntitySet="APPOINTMENTS">
+                <ScalarProperty Name="ApptID" ColumnName="ApptID" />
+                <ScalarProperty Name="StudentID" ColumnName="StudentID" />
+                <ScalarProperty Name="CounselorID" ColumnName="CounselorID" />
+                <ScalarProperty Name="ApptDateTime" ColumnName="ApptDateTime" />
+                <ScalarProperty Name="ApptApproval" ColumnName="ApptApproval" />
+                <ScalarProperty Name="ApptLocation" ColumnName="ApptLocation" />
+                <ScalarProperty Name="ApptDescription" ColumnName="ApptDescription" />
+                <ScalarProperty Name="ApptLink" ColumnName="ApptLink" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
